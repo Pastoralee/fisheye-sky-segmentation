@@ -116,6 +116,33 @@ Masks/
 ```
 Make sure folder names are correct for the program to recognize them.
 
+---
+
+## Dataset
+
+The dataset contains:  
+- **Segmentation masks** for both the base models and meta-models.  
+- **Validation and test images** for evaluation purposes.  
+- **Training images are not included** because they are sourced from Google Street View and cannot be redistributed directly due to licensing restrictions.  
+
+Each image filename includes the **latitude and longitude** of its location. Users can use this information to retrieve the corresponding panoramas from Google Street View.  
+
+### Download
+You can download the dataset (masks, validation/test images, and metadata) from the following link:  
+
+[Download Dataset (Google Drive)](https://drive.google.com/drive/folders/1PnKakX55PCW72MTsl-TXBb6TM5EOUejA?usp=drive_link)
+
+---
+
+### Reconstruct Training Data
+To obtain the training images:  
+- Use the provided **`GSV_extract_dataset.ipynb`** notebook to fetch and process images directly from Google Street View.  
+- Alternatively, call the utility functions in **`GSV_utils.py`** to programmatically download and assemble the images using the included panorama IDs.  
+
+> **Note:** Downloading images requires a Google Street View API key and must comply with [Google’s Terms of Service](https://developers.google.com/maps/terms).  
+
+---
+
 ## Citation
 
 If you use this code or dataset, please cite:
