@@ -139,7 +139,7 @@ To obtain the training images:
 - Use the provided **`GSV_extract_dataset.ipynb`** notebook to fetch and process images directly from Google Street View.  
 - Alternatively, call the utility functions in **`GSV_utils.py`** to programmatically download and assemble the images using the included panorama IDs.  
 
-> **Note:** Downloading images requires a Google Street View API key and must comply with [Google’s Terms of Service](https://developers.google.com/maps/terms).  
+> **Note:** Downloading images requires a Google Street View API key and must comply with [Google’s Terms of Service].
 
 ---
 
