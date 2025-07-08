@@ -1,0 +1,22 @@
+torch==2.6.0
+torchaudio==2.6.0
+torchvision==0.21.0
+termcolor==2.5.0
+segmentation_models_pytorch @ git+https://github.com/qubvel/segmentation_models.pytorch@ed7b638bfddc4ae719f3c53077c024cba7df6f64
+timm==1.0.15
+opencv-python==4.11.0.86
+numpy==1.26.4
+scikit-learn==1.5.1
+pydensecrf @ git+https://github.com/lucasb-eyer/pydensecrf.git@2723c7fa4f2ead16ae1ce3d8afe977724bb8f87f
+matplotlib==3.9.2
+pandas==2.2.2
+tqdm==4.66.5
+lightgbm==4.6.0
+scipy==1.13.1
+pillow==10.4.0
+global-land-mask==1.0.0
+requests==2.32.3
+shap==0.47.2
+ipykernel
+notebook
+tensorboard==2.19.0
