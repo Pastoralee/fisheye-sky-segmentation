@@ -118,19 +118,25 @@ Make sure folder names are correct for the program to recognize them.
 
 ---
 
-## Dataset
+## Dataset and Trained Models
 
-The dataset contains:  
-- **Segmentation masks** for both the base models and meta-models.  
-- **Validation and test images** for evaluation purposes.  
-- **Training images are not included** because they are sourced from Google Street View and cannot be redistributed directly due to licensing restrictions.  
-
-Each image filename includes the **latitude and longitude** of its location. Users can use this information to retrieve the corresponding panoramas from Google Street View.  
+This repository is accompanied by a dataset and trained model weights, available for download:  
 
 ### Download
-You can download the dataset (masks, validation/test images, and metadata) from the following link:  
+[Download Dataset & Trained Models (Google Drive)](https://drive.google.com/drive/folders/1PnKakX55PCW72MTsl-TXBb6TM5EOUejA?usp=drive_link)
 
-[Download Dataset (Google Drive)](https://drive.google.com/drive/folders/1PnKakX55PCW72MTsl-TXBb6TM5EOUejA?usp=drive_link)
+---
+
+### Contents
+The Google Drive folder includes:  
+
+- **Segmentation masks** for both base models and meta-models.  
+- **Validation and test images** for evaluation.  
+- **Trained model weights** for base models and LightGBM meta-models.  
+
+**Training images are NOT included** because they are sourced from Google Street View and cannot be redistributed directly due to licensing restrictions.  
+
+Each image filename includes the **latitude and longitude** coordinates so you can fetch the corresponding panoramas yourself.
 
 ---
 
