@@ -130,23 +130,12 @@ This repository is accompanied by a dataset and trained model weights, available
 ### Contents
 The Google Drive folder includes:  
 
-- **Segmentation masks** for both base models and meta-models.  
-- **Validation and test images** for evaluation.  
+- **Training, validation, and test images** for both the CNN and the LightGBM meta-model.
+- **Segmentation masks** corresponding to all images.
 - **Trained model weights** for base models and LightGBM meta-models.  
 
-**Training images are NOT included** because they are sourced from Google Street View and cannot be redistributed directly due to licensing restrictions.  
-
-Each image filename includes the **latitude and longitude** coordinates so you can fetch the corresponding panoramas yourself.
-
----
-
-### Reconstruct Training Data
-To obtain the training images:  
-- Use the provided **`GSV_extract_dataset.ipynb`** notebook to fetch and process images directly from Google Street View.  
-- Alternatively, call the utility functions in **`GSV_utils.py`** to programmatically download and assemble the images using the included panorama IDs.  
-
-> **Note:** Downloading images requires a Google Street View API key and must comply with Google’s Terms of Service.
-
+Each image filename includes the **latitude and longitude** coordinates of its location for reference, which can be used to retrieve the corresponding Google Street View panoramas at the correct location.  
+ 
 ---
 
 ## Citation
