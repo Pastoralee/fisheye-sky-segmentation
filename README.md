@@ -1,7 +1,7 @@
-# All-Sky, All-Objects: A Hybrid Deep Learning Approach to Global Fisheye Sky Segmentation
+# Pixel-Wise Sky-Obstacle Segmentation in Fisheye Imagery Using Deep Learning and Gradient Boosting
 
 This repository contains the training and inference scripts for the paper:  
-**“All-Sky, All-Objects: A Hybrid Deep Learning Approach to Global Fisheye Sky Segmentation”**.  
+**“Pixel-Wise Sky-Obstacle Segmentation in Fisheye Imagery Using Deep Learning and Gradient Boosting”**.  
 
 It enables segmentation of sky and obstacles in fisheye (ultra-wide angle) images, producing binary masks for further analysis.
 
