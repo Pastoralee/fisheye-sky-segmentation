@@ -6,12 +6,9 @@ import segmentation_models_pytorch as smp
 import pydensecrf.densecrf as dcrf
 from pydensecrf.utils import unary_from_softmax
 import matplotlib.pyplot as plt
-import time
-from datetime import timedelta
-import torchvision.transforms as T
 import pandas as pd
 from tqdm import tqdm
-from scipy.ndimage import uniform_filter, generic_filter
+from scipy.ndimage import uniform_filter, shift
 import utils as ut
 from termcolor import colored
 from data import process_image
@@ -298,12 +295,27 @@ def texture_patch(gray_img, patch_size):
     Returns:
         np.ndarray: Texture map of the same shape as input.
     """
-    def local_texture(patch):
-        center = patch[len(patch) // 2]
-        diffs = np.abs(patch - center)
-        return np.sum(diffs) / (len(patch) - 1)
-    
-    return generic_filter(gray_img, local_texture, size=patch_size, mode='reflect')
+    r = patch_size // 2
+    N = patch_size * patch_size - 1  # exclude center
+    acc = np.zeros_like(gray_img)
+
+    # Loop over neighborhood offsets
+    for dy in range(-r, r + 1):
+        for dx in range(-r, r + 1):
+            if dy == 0 and dx == 0:
+                continue  # skip center pixel
+
+            neigh = shift(
+                gray_img,
+                shift=(dy, dx),
+                order=0,
+                mode='reflect',
+                prefilter=False
+            )
+
+            acc += np.abs(neigh - gray_img)
+
+    return acc / N
 
 def extract_rich_features(img, pred_dict):
     """
@@ -382,8 +394,10 @@ def inference(pathImg, pathModel, model_name='efficientnet-b7', use_lgbm = False
     """
 
     threshold_dict = {
-        'efficientnet-b5': 176 / 255,
-        'efficientnet-b7': 157 / 255
+        'efficientnet-b4': 155 / 255,
+        'efficientnet-b5': 158 / 255,
+        'efficientnet-b6': 148 / 255,
+        'efficientnet-b7': 161 / 255
     }
     threshold = threshold_dict.get(model_name, 0.5)
 
@@ -444,7 +458,7 @@ def inference(pathImg, pathModel, model_name='efficientnet-b7', use_lgbm = False
             pred_dict[f"p_sky_{scale}"] = pred_resized.flatten()
 
         X_lgbm = extract_rich_features(image_resized, pred_dict)
-        pred_lgbm = model_lgbm.predict(X_lgbm)
+        pred_lgbm = model_lgbm.predict(X_lgbm, num_threads=os.cpu_count())
         pred_mask = pred_lgbm.reshape(*resize_target)
     else:
         img_tensor = torch.tensor(image_resized, dtype=torch.float32).permute(2, 0, 1).unsqueeze(0) / 255.0

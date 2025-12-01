@@ -19,7 +19,7 @@ def decode_preprocessing(code):
      contrast_energy, exponential_transform, color_gradient, hsv, kmeans]
 
     Args:
-        code (int): An integer (0–1023) encoding the preprocessing configuration.
+        code (int): An integer (0-1023) encoding the preprocessing configuration.
 
     Returns:
         PreProcessing: An object with boolean fields indicating which preprocessing steps are enabled.
@@ -52,7 +52,7 @@ def encode_preprocessing(preprocessing):
             If None is passed, returns 0b1000000000 (base_img only enabled by default).
 
     Returns:
-        int: An integer (0–1023) encoding the preprocessing configuration.
+        int: An integer (0-1023) encoding the preprocessing configuration.
     """
     if preprocessing is None:
         return 0b1000000000
